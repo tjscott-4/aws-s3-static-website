@@ -2,74 +2,60 @@
 
 ## Overview
 
-This project demonstrates how to host a **static website using Amazon S3**.
-It also shows how to configure bucket permissions and troubleshoot a **403 Access Denied** error caused by incorrect permissions.
+This project demonstrates how to host a static website using **Amazon S3 Static Website Hosting**.  
+It also includes troubleshooting a common **403 Access Denied** error caused by incorrect bucket permissions.
 
-This is one of the most common beginner cloud deployments and demonstrates real-world troubleshooting of AWS permissions.
+This project shows basic AWS cloud skills including S3 configuration, bucket policies, and troubleshooting.
 
 ---
 
 ## AWS Services Used
 
-* **Amazon S3** – Object storage used to host the website
-* **S3 Static Website Hosting** – Enables a bucket to serve web content
-* **S3 Bucket Policies** – Controls public access to objects
+- Amazon S3
+- S3 Static Website Hosting
+- S3 Bucket Policies
 
 ---
 
 ## Project Architecture
 
-User Browser
-⬇
-S3 Website Endpoint
-⬇
-S3 Bucket
-⬇
-index.html
+User Browser → S3 Website Endpoint → S3 Bucket → index.html
 
 ---
 
-## 1️⃣ Create S3 Bucket
+## 1. Create S3 Bucket
 
 A globally unique S3 bucket was created to store website files.
 
-![S3 Bucket](screenshots/s3-bucket.png)
+![S3 Bucket and File Upload](screenshots/01-s3-bucket-and-file-upload.png)
 
 ---
 
-## 2️⃣ Upload Website Files
+## 2. Enable Static Website Hosting
 
-The `index.html` file was uploaded to the bucket to serve as the homepage.
+Static website hosting was enabled and `index.html` was configured as the index document.
 
-![File Upload](screenshots/file-upload.png)
-
----
-
-## 3️⃣ Enable Static Website Hosting
-
-Static website hosting was enabled and `index.html` was configured as the **index document**.
-
-![Static Website Hosting](screenshots/static-hosting.png)
+![Static Website Hosting](screenshots/02-static-website-hosting-enabled.png)
 
 ---
 
-## 4️⃣ Configure Public Access
+## 3. Configure Public Access
 
-Block Public Access settings were modified so the bucket could serve a public website.
+Block Public Access settings were modified to allow the bucket to host a public website.
 
-![Public Access Settings](screenshots/public-access.png)
+![Public Access Settings](screenshots/03-public-access-settings.png)
 
 ---
 
-## 5️⃣ Configure Bucket Policy
+## 4. Configure Bucket Policy
 
-A bucket policy was added to allow **public read access** to objects using `s3:GetObject`.
+A bucket policy was added to allow public read access to website files.
 
-![Bucket Policy](screenshots/bucket-policy.png)
+![Bucket Policy](screenshots/04-bucket-policy-public-read.png)
 
-Example Policy:
+Example policy:
 
-```
+```json
 {
  "Version":"2012-10-17",
  "Statement":[
@@ -86,34 +72,38 @@ Example Policy:
 
 ---
 
-## 6️⃣ Verify Website Deployment
+## 5. Verify Website Deployment
 
 The static website was successfully accessed using the S3 website endpoint.
 
-![Live Website](screenshots/live-site.png)
+![Live Website](screenshots/05-live-website.png)
 
 ---
 
-## 7️⃣ Troubleshooting: 403 Access Denied
+## 6. Troubleshooting: 403 Access Denied
 
-To simulate a real-world troubleshooting scenario, the bucket policy was temporarily removed.
+To simulate a real-world troubleshooting scenario, the bucket policy was removed.  
+This caused the website to return a **403 Access Denied** error.
 
-This caused the website to return a **403 Access Denied error**.
+![Access Denied Error](screenshots/06-access-denied-error.png)
 
-![Access Denied](screenshots/access-denied.png)
+---
 
-The issue was resolved by restoring the correct bucket policy permissions.
+## 7. Restore Website Access
+
+The issue was resolved by restoring the correct bucket policy.
+
+![Site Restored](screenshots/07-site-restored.png)
 
 ---
 
 ## Key Skills Demonstrated
 
-* AWS S3 configuration
-* Static website hosting
-* Bucket policy permissions
-* Public access configuration
-* Troubleshooting AWS access errors
-* Cloud architecture documentation
+- AWS S3 configuration
+- Static website hosting
+- Bucket policy permissions
+- Public access configuration
+- Troubleshooting AWS access errors
 
 ---
 
